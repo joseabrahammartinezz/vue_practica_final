@@ -1,0 +1,78 @@
+{
+  "Areas": [
+    {
+      "id": 1,
+      "nombre": "Finanzas",
+      "encargado": "José Linares",
+      "num_funcionarios": 4
+    },
+    {
+      "id": 3,
+      "nombre": "Administracion",
+      "encargado": "Gheisa Esobar",
+      "num_funcionarios": "4"
+    },
+    {
+      "id": 5,
+      "nombre": "Legal",
+      "encargado": "Maria Tordoya",
+      "num_funcionarios": "6"
+    },
+    {
+      "id": 6,
+      "nombre": "Sistemas",
+      "encargado": "Abraham Martinez",
+      "num_funcionarios": 3
+    }
+  ],
+  "Activos": [
+    {
+      "id": 1,
+      "tipo_activo": "Computadora",
+      "marca": "HP",
+      "modelo": "Pavilion 360",
+      "estado": "Nuevo",
+      "areaId": 1
+    },
+    {
+      "id": 2,
+      "tipo_activo": "Impresora",
+      "marca": "HP",
+      "modelo": "Laserjet 426",
+      "estado": "Usado",
+      "areaId": 2
+    },
+    {
+      "id": 3,
+      "tipo_activo": "Monitor",
+      "marca": "Acer",
+      "modelo": "E40",
+      "estado": "Desuso",
+      "areaId": 3
+    },
+    {
+      "id": 4,
+      "tipo_activo": "Computadora",
+      "marca": "HP",
+      "modelo": "Pavilion 360",
+      "estado": "Usado",
+      "areaId": "3"
+    },
+    {
+      "id": 5,
+      "tipo_activo": "Computadora",
+      "marca": "Dell",
+      "modelo": "1540",
+      "estado": "Nuevo",
+      "areaId": 2
+    },
+    {
+      "id": 7,
+      "tipo_activo": "Monitor",
+      "marca": "Acer",
+      "modelo": "E50",
+      "estado": "Nuevo",
+      "areaId": 3
+    }
+  ]
+}
