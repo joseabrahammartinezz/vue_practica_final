@@ -1,5 +1,27 @@
 <template>
 
+     <div class="container">
+        <label class="form-label">Búsquedas</label>
+        <section class="form">
+       
+            <div class="input-group mb-3">
+                <input type="text" v-model="textoABuscar" class="form-control" placeholder="Buscar Areas" >
+                <button class="btn btn-info" @click.prevent="getAreas()">Buscar</button>
+            </div>
+        </section>
+    </div>
+    
+    <div class="container">
+        <label class="form-label">Filtro por Nombre de Area</label>
+        <section class="form">
+       
+            <div class="input-group mb-3">
+                <input type="text" v-model="textoFiltrar" class="form-control" placeholder="Filtrar Areas" >
+                
+            </div>
+        </section>
+    </div>
+        
 
     <div class="container">
         <label class="form-label">Agregar Area</label>
@@ -28,7 +50,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(area, index) in areas">
+                <tr v-for="(area, index) in lista">
                     <td>{{ area.id }}</td>
                     <td>
                         <span v-if="formActualizar && idActualizar == index">
@@ -103,14 +125,17 @@ export default {
                 num_funcionarios: 0
             },
             // lista de areas
-            areas: []
+            areas: [],
+            textoABuscar: '',
+            textoFiltrar: '',
+            filtroareas:[]
         }
     },
     methods: {
         getAreas(){
             axios({
                 method: "get",
-                url: "http://localhost:3333/Areas/"
+                url: "http://localhost:3333/Areas/?q="+this.textoABuscar
             })
             .then(response => {
                 this.areas = response.data;
@@ -175,9 +200,19 @@ export default {
             this.formActualizar = false;
             this.getAreas();
             location.reload();
+        },
+        lista_(){
+           return this.lista
         }
     },
     computed: {
+        lista(){
+            console.log("filtro: " + this.textoFiltrar);
+            if(this.textoFiltrar!=''){
+                return this.areas.filter(item =>item.nombre ==this.textoFiltrar);
+            }
+            return this.areas;
+        }
     },
     mounted() {
         this.getAreas()

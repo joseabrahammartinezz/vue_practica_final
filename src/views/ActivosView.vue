@@ -1,6 +1,21 @@
 <template>
-
-
+    <div class="container">
+        <label class="form-label">Búsquedas</label>
+        <div class="input-group mb-3">
+            <input type="text" v-model="textoABuscar" class="form-control" placeholder="Buscar Activo" >
+            <button class="btn btn-info" @click.prevent="getActivos()">Buscar</button>
+        </div>
+    </div>
+    <div class="container">
+        <label class="form-label">Filtrar por Estado</label>
+        <section class="form">
+       
+            <div class="input-group mb-3">
+                <input type="text" v-model="textoFiltrar" class="form-control" placeholder="Filtrar Activos por Estado" >
+                
+            </div>
+        </section>
+    </div>
     <div class="container">
         <label class="form-label">Agregar Activo</label>
         <section class="form">
@@ -31,7 +46,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(activo, index) in activos">
+                <tr v-for="(activo, index) in lista">
                     <td>{{ activo.id }}</td>
                     <td>
                         <span v-if="formActualizar && idActualizar == index">
@@ -125,14 +140,16 @@ export default {
                 areaId:0
             },
             // lista de areas
-            activos: []
+            activos: [],
+            textoABuscar: '',
+            textoFiltrar: '',
         }
     },
     methods: {
         getActivos(){
             axios({
                 method: "get",
-                url: "http://localhost:3333/Activos/"
+                url: "http://localhost:3333/Activos/?q="+this.textoABuscar
             })
             .then(response => {
                 this.activos = response.data;
@@ -205,6 +222,13 @@ export default {
         }
     },
     computed: {
+        lista(){
+            console.log("filtro: " + this.textoFiltrar);
+            if(this.textoFiltrar!=''){
+                return this.activos.filter(item =>item.estado ==this.textoFiltrar);
+            }
+            return this.activos;
+        }
     },
     mounted() {
         this.getActivos()
