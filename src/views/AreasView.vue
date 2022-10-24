@@ -10,17 +10,7 @@
             </div>
         </section>
     </div>
-    
-    <div class="container">
-        <label class="form-label">Filtro por Nombre de Area</label>
-        <section class="form">
-       
-            <div class="input-group mb-3">
-                <input type="text" v-model="textoFiltrar" class="form-control" placeholder="Filtrar Areas" >
-                
-            </div>
-        </section>
-    </div>
+   
         
 
     <div class="container">

@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <p>
-      <h2>Practica Final modulo VI - Vue 3</h2>
+      <h2>Práctica Final Módulo VI - Vue 3</h2>
     </p>
     <h1>José Abraham Martínez Soliz</h1>
     

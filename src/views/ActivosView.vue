@@ -5,17 +5,17 @@
             <input type="text" v-model="textoABuscar" class="form-control" placeholder="Buscar Activo" >
             <button class="btn btn-info" @click.prevent="getActivos()">Buscar</button>
         </div>
-    </div>
-    <div class="container">
         <label class="form-label">Filtrar por Estado</label>
         <section class="form">
-       
-            <div class="input-group mb-3">
-                <input type="text" v-model="textoFiltrar" class="form-control" placeholder="Filtrar Activos por Estado" >
-                
-            </div>
+            <select  v-model="textoFiltrar" placeholder="Todos"  @click.prevent="setear_filtro()" >
+                <option>Todos</option>
+                <option>Nuevo</option>
+                <option>Usado</option>
+                <option>Desuso</option>
+            </select>
         </section>
     </div>
+    
     <div class="container">
         <label class="form-label">Agregar Activo</label>
         <section class="form">
@@ -146,6 +146,11 @@ export default {
         }
     },
     methods: {
+        setear_filtro(){
+            if (this.textoFiltrar=='Todos'){
+                this.textoFiltrar= '';
+            }
+        },
         getActivos(){
             axios({
                 method: "get",
@@ -153,6 +158,16 @@ export default {
             })
             .then(response => {
                 this.activos = response.data;
+                this.activos.sort(function (a, b) {
+                    if (a.areaId > b.areaId) {
+                        return 1;
+                    }
+                    if (a.areaId < b.areaId) {
+                        return -1;
+                    }
+                    // a must be equal to b
+                    return 0;
+                });
             console.log(response);
             })
             .catch(e => console.log(e));

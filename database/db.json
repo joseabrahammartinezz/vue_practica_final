@@ -44,11 +44,11 @@
     },
     {
       "id": 3,
-      "tipo_activo": "Monitor",
-      "marca": "Acer",
-      "modelo": "E40",
-      "estado": "Desuso",
-      "areaId": 3
+      "tipo_activo": "Computadora",
+      "marca": "Dell",
+      "modelo": "1541",
+      "estado": "Nuevo",
+      "areaId": 2
     },
     {
       "id": 4,
@@ -72,6 +72,14 @@
       "marca": "Acer",
       "modelo": "E50",
       "estado": "Nuevo",
+      "areaId": 3
+    },
+    {
+      "id": 8,
+      "tipo_activo": "Computadora",
+      "marca": "Lenovo",
+      "modelo": "L460",
+      "estado": "Desuso",
       "areaId": 3
     }
   ]
